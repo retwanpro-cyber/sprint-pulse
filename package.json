@@ -1,0 +1,21 @@
+{
+  "name": "sprint-pulse",
+  "version": "1.0.0",
+  "description": "Sprint health, workload and risk insights for Azure Boards.",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "webpack --mode production",
+    "package": "tfx extension create --manifest-globs vss-extension.json --output-path out",
+    "all": "npm run build && npm run package"
+  },
+  "dependencies": {
+    "azure-devops-extension-sdk": "^4.0.2"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^12.0.2",
+    "tfx-cli": "^0.17.0",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  }
+}

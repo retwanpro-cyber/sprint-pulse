@@ -1,0 +1,86 @@
+{
+  "manifestVersion": 1,
+  "id": "sprint-pulse",
+  "publisher": "Pro",
+  "version": "1.0.0",
+  "name": "Sprint Pulse - Sprint Health & Workload Insights",
+  "description": "Real-time sprint health score, team workload, blocked and stale work item detection for Azure Boards. Zero setup, no external services.",
+  "public": true,
+  "categories": [
+    "Azure Boards"
+  ],
+  "tags": [
+    "sprint",
+    "boards",
+    "dashboard",
+    "workload",
+    "agile",
+    "scrum",
+    "kanban",
+    "analytics",
+    "work items",
+    "team capacity",
+    "reporting",
+    "insights"
+  ],
+  "icons": {
+    "default": "images/icon.png"
+  },
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "branding": {
+    "color": "rgb(0, 90, 170)",
+    "theme": "dark"
+  },
+  "content": {
+    "details": {
+      "path": "overview.md"
+    },
+    "license": {
+      "path": "LICENSE"
+    }
+  },
+  "scopes": [
+    "vso.work",
+    "vso.project"
+  ],
+  "files": [
+    {
+      "path": "dist",
+      "addressable": true
+    },
+    {
+      "path": "images",
+      "addressable": true
+    }
+  ],
+  "contributions": [
+    {
+      "id": "sprint-pulse-hub",
+      "type": "ms.vss-web.hub",
+      "targets": [
+        "ms.vss-work-web.work-hub-group"
+      ],
+      "properties": {
+        "name": "Sprint Pulse",
+        "order": 99,
+        "uri": "dist/hub.html"
+      }
+    }
+  ],
+  "links": {
+    "support": {
+      "uri": "https://github.com/your-account/sprint-pulse/issues"
+    },
+    "getstarted": {
+      "uri": "https://github.com/your-account/sprint-pulse#readme"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/your-account/sprint-pulse"
+  }
+}
