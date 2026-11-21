@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sprint Pulse</title>
+<style>
+  :root {
+    --bg: var(--background-color, #ffffff);
+    --fg: var(--text-primary-color, rgba(0,0,0,.9));
+    --muted: var(--text-secondary-color, rgba(0,0,0,.6));
+    --card: var(--palette-neutral-2, rgba(0,0,0,.04));
+    --line: var(--palette-neutral-8, rgba(0,0,0,.12));
+    --accent: #0078d4;
+    --good: #107c10;
+    --warn: #c47f00;
+    --bad: #d13438;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 20px 24px 40px; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--fg); background: var(--bg); }
+  header { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+  h1 { font-size: 22px; margin: 0; }
+  .sub { color: var(--muted); font-size: 13px; margin-top: 2px; }
+  .controls { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  select, button { font: inherit; font-size: 13px; padding: 6px 10px; border: 1px solid var(--line); border-radius: 4px; background: var(--card); color: var(--fg); cursor: pointer; }
+  button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin-bottom: 18px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; }
+  .kpi .v { font-size: 28px; font-weight: 600; }
+  .kpi .l { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+  .score { display: flex; align-items: center; gap: 16px; }
+  .ring { width: 84px; height: 84px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 22px; }
+  .ring span { background: var(--bg); width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; }
+  .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 12px; }
+  h2 { font-size: 15px; margin: 0 0 12px; }
+  .bar-row { display: grid; grid-template-columns: 130px 1fr 44px; gap: 8px; align-items: center; font-size: 13px; margin: 7px 0; }
+  .bar-row .name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .track { height: 12px; border-radius: 6px; background: var(--line); overflow: hidden; display: flex; }
+  .seg { height: 100%; }
+  .progress { height: 14px; border-radius: 7px; background: var(--line); overflow: hidden; margin: 8px 0 4px; }
+  .progress > div { height: 100%; background: var(--good); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 7px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 12px; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .pill { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 11px; color: #fff; }
+  .legend { display: flex; flex-wrap: wrap; gap: 12px; font-size: 12px; color: var(--muted); margin-top: 10px; }
+  .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; }
+  .empty, .error { padding: 40px 10px; text-align: center; color: var(--muted); }
+  .error { color: var(--bad); }
+  .spinner { padding: 60px; text-align: center; color: var(--muted); }
+</style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Sprint Pulse</h1>
+      <div class="sub" id="sprintInfo">Loading…</div>
+    </div>
+    <div class="controls">
+      <select id="teamSelect" aria-label="Team"></select>
+      <button id="refreshBtn" class="primary">Refresh</button>
+      <button id="csvBtn">Export CSV</button>
+    </div>
+  </header>
+  <main id="content"><div class="spinner">Loading sprint data…</div></main>
+  <script src="hub.js"></script>
+</body>
+</html>
